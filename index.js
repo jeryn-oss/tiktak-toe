@@ -216,7 +216,6 @@ function check() {
 }
 
 function checkme(board) {
-    winner = true
     var count = 0
     for (var i = 0; i < 9; i++) {
         if (board[arrayval[i]] != ' ') {
@@ -226,8 +225,6 @@ function checkme(board) {
     if (count == 9) {
         $('.winner').css('display', 'block')
         $('.winner').text('Draw')
-    } else {
-        winner = false
     }
 
 }
