@@ -16,7 +16,6 @@ $(".p11").click(function () {
     console.log("clicked 11");
 
     if (player == true) {
-        place('o', 11)
     } else {
         place('x', 11)
     }
@@ -26,7 +25,6 @@ $(".p12").click(function () {
     console.log("clicked 12");
 
     if (player == true) {
-        place('o', 12)
     } else {
         place('x', 12)
     }
@@ -36,7 +34,6 @@ $(".p13").click(function () {
     console.log("clicked 13");
 
     if (player == true) {
-        place('o', 13)
     } else {
         place('x', 13)
     }
@@ -46,7 +43,6 @@ $(".p21").click(function () {
     console.log("clicked 21");
 
     if (player == true) {
-        place('o', 21)
     } else {
         place('x', 21)
     }
@@ -56,7 +52,6 @@ $(".p22").click(function () {
     console.log("clicked 22");
 
     if (player == true) {
-        place('o', 22)
     } else {
         place('x', 22)
 
@@ -67,7 +62,6 @@ $(".p23").click(function () {
     console.log("clicked 23");
 
     if (player == true) {
-        place('o', 23)
     } else {
         place('x', 23)
     }
@@ -77,7 +71,6 @@ $(".p31").click(function () {
     console.log("clicked 31");
 
     if (player == true) {
-        place('o', 31)
     } else {
         place('x', 31)
     }
@@ -87,7 +80,6 @@ $(".p32").click(function () {
     console.log("clicked 32");
 
     if (player == true) {
-        place('o', 32)
     } else {
         place('x', 32)
     }
@@ -97,7 +89,6 @@ $(".p33").click(function () {
     console.log("clicked 33");
 
     if (player == true) {
-        place('o', 33)
     } else {
         place('x', 33)
     }
@@ -122,10 +113,16 @@ function place(type, position) {
 
         }
     }
-    if (player == true && winner == false) {
-        place('o', aiMove(ttt, 'o'))
-    }
-    draw(ttt)
+    setTimeout(function () {
+        if (player == true && winner == false) {
+            var move = minimax(ttt, 'o').index
+            if (move == undefined) {
+                return
+            }
+            place('o', move)
+        }
+    }, 1000)
+
 }
 
 
@@ -146,7 +143,6 @@ function draw(t) {
 }
 
 function check() {
-    var checkme;
     var value;
     for (var i = 0; i <= 1; i++) {
         if (i == 0) {
@@ -156,34 +152,39 @@ function check() {
         }
 
         if (ttt[11] == value && ttt[12] == value && ttt[13] == value) {
-            $('.cross').css({ 'height': '240px', 'top': '15%', 'left': '50%','transform': 'translate(-50%, -50%) rotate(90deg)', 'opacity': '1', 'display': 'block' })
+            $('.cross').css({ 'height': '240px', 'top': '15%', 'left': '50%', 'transform': 'translate(-50%, -50%) rotate(90deg)', 'opacity': '1', 'display': 'block' })
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
         if (ttt[21] == value && ttt[22] == value && ttt[23] == value) {
-            $('.cross').css({ 'height': '240px', 'top': '50%','left': '50%', 'transform': 'translate(-50%, -50%) rotate(90deg)', 'opacity': '1', 'display': 'block' })
+            $('.cross').css({ 'height': '240px', 'top': '50%', 'left': '50%', 'transform': 'translate(-50%, -50%) rotate(90deg)', 'opacity': '1', 'display': 'block' })
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
         if (ttt[31] == value && ttt[32] == value && ttt[33] == value) {
             $('.cross').css({ 'height': '240px', 'top': '85.6%', 'left': '50%', 'transform': 'translate(-50%, -50%) rotate(90deg)', 'opacity': '1', 'display': 'block' })
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
         if (ttt[11] == value && ttt[21] == value && ttt[31] == value) {
             $('.cross').css({ 'height': '240px', 'top': '50%', 'left': '14.6%', 'transform': 'translate(-50%, -50%) rotate(0deg)', 'opacity': '1', 'display': 'block' })
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
         if (ttt[12] == value && ttt[22] == value && ttt[32] == value) {
             $('.cross').css({ 'height': '240px', 'top': '50%', 'left': '50%', 'transform': 'translate(-50%, -50%) rotate(0deg)', 'opacity': '1', 'display': 'block' })
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
 
         if (ttt[13] == value && ttt[23] == value && ttt[33] == value) {
@@ -191,38 +192,44 @@ function check() {
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
         if (ttt[11] == value && ttt[22] == value && ttt[33] == value) {
             $('.cross').css({ 'height': '335px', 'top': '50%', 'left': '50%', 'transform': 'translate(-50%, -50%) rotate(135deg)', 'opacity': '1', 'display': 'block' })
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
         if (ttt[13] == value && ttt[22] == value && ttt[31] == value) {
             $('.cross').css({ 'height': '335px', 'top': '50%', 'left': '50%', 'transform': 'translate(-50%, -50%) rotate(45deg)', 'opacity': '1', 'display': 'block' })
             $('.winner').css('display', 'block')
             console.log('wonnnn')
             winner = true
+            return value
         }
         if (i == 1) {
-            checkme == true
+            checkme(ttt)
         }
         //check if all sqaures arfilled 
     }
+}
 
-    if (checkme == true) {
-        var count = 0
-        for (var i = 11; i <= 33; i++) {
-            if (ttt[i] != ' ') {
-                count++
-            }
-        }
-        if (count == 9) {
-            $('.winner').css('display', 'block')
-            $('.winner').text('Draw')
-            winner = true
+function checkme(board) {
+    winner = true
+    var count = 0
+    for (var i = 0; i < 9; i++) {
+        if (board[arrayval[i]] != ' ') {
+            count++
         }
     }
+    if (count == 9) {
+        $('.winner').css('display', 'block')
+        $('.winner').text('Draw')
+    } else {
+        winner = false
+    }
+
 }
 
 function reset() {
@@ -235,150 +242,87 @@ function reset() {
     draw(ttt)
 }
 
-function aiMove(t) {
-    bestscore = -1000
-    var arrayval = [11, 12, 13, 21, 22, 23, 31, 32, 33];
-    for (var i = 0; i < 9; i++) {
-        var val = arrayval[i]
-        if (t[val] == ' ') {
-            t[val] = 'o'
-            var score = minimax(t, 0, false)
-            t[val] = ' '
-            if (bestscore == null) {
-                bestscore = score
-                bestmove = val
-            } else if (score > bestscore) {
-                bestscore = score
-                bestmove = val
+function minimax(newBoard, player) {
+    var avalable = getAvailable(newBoard)
+    if (checkWin(newBoard, 'x')) {
+        return { score: -10 }
+    } else if (checkWin(newBoard, 'o')) {
+        return { score: 10 }
+    } else if (avalable.length == 0) {
+        return { score: 0 }
+    }
+
+    let moves = []
+    for (var i = 0; i < avalable.length; i++) {
+        var move = {}
+        move.index = avalable[i]
+        newBoard[avalable[i]] = player
+        if (player == 'o') {
+            var result = minimax(newBoard, 'x')
+            move.score = result.score
+        }
+        else {
+            var result = minimax(newBoard, 'o')
+            move.score = result.score
+        }
+        newBoard[avalable[i]] = ' '
+        moves.push(move)
+    }
+
+    var bestmove;
+    if (player == 'o') {
+        var bestscore = -10000
+        for (var i = 0; i < moves.length; i++) {
+            if (moves[i].score > bestscore) {
+                bestscore = moves[i].score
+                bestmove = i
             }
         }
     }
-    return bestmove
+    else {
+        var bestscore = 10000
+        for (var i = 0; i < moves.length; i++) {
+            if (moves[i].score < bestscore) {
+                bestscore = moves[i].score
+                bestmove = i
+            }
+        }
+    }
+    return moves[bestmove]
 }
 
-/*/ function minimax(board, depth, isMaximizingPlayer):
 
-    if current board state is a terminal state :
-        return value of the board
-    
-    if isMaximizingPlayer :
-        bestVal = -INFINITY 
-        for each move in board :
-            value = minimax(board, depth+1, false)
-            bestVal = max( bestVal, value) 
-        return bestVal
 
-    else :
-        bestVal = +INFINITY 
-        for each move in board :
-            value = minimax(board, depth+1, true)
-            bestVal = min( bestVal, value) 
-        return bestVal /*/
-
-/*/ unction minimax(board, depth, isMaximizingPlayer):
-
-    if current board state is a terminal state :
-        return value of the board
-    
-    if isMaximizingPlayer :
-        bestVal = -INFINITY 
-        for each move in board :
-            value = minimax(board, depth+1, false)
-            bestVal = max( bestVal, value) 
-        return bestVal
-
-    else :
-        bestVal = +INFINITY 
-        for each move in board :
-            value = minimax(board, depth+1, true)
-            bestVal = min( bestVal, value) 
-        return bestVal 
-        /*/
-
-function minimax(t, depth, isMaximizingPlayer) {
-    var arrayval = [11, 12, 13, 21, 22, 23, 31, 32, 33];
-    var result = checkWinner(t)
-    if (result !== null) {
-        return result
-    }
-    if (isMaximizingPlayer) {
-        console.log('got here')
-        var bestscore = -Infinity
-        for (var i = 0; i < 9; i++) {
-            var val = arrayval[i]
-            if (t[val] == ' ') {
-                t[val] = 'o'
-                var score = minimax(t, depth + 1, false)
-                t[val] = ' '
-                bestscore = Math.max(score, bestscore)
-            }
+function getAvailable(board) {
+    var avalable = []
+    for (var i = 0; i <= 9; i++) {
+        val = arrayval[i]
+        if (board[val] == ' ') {
+            avalable.push(val)
         }
-        return bestscore
-    } else {
-        var bestscore = +Infinity
-        for (var i = 0; i < 9; i++) {
-            var val = arrayval[i]
-            if (t[val] == ' ') {
-                t[val] = 'x'
-                var score = checkWinner(t)
-
-                t[val] = ' '
-                bestscore = Math.min(score, bestscore)
-            }
-        }
-        return bestscore
     }
+    return avalable
 }
 
-function checkWinner(t) {
-    if (t[11] == 'x' && t[12] == 'x' && t[13] == 'x') {
-        return -1
-    }
-    if (t[21] == 'x' && t[22] == 'x' && t[23] == 'x') {
-        return -1
-    }
-    if (t[31] == 'x' && t[32] == 'x' && t[33] == 'x') {
-        return -1
-    }
-    if (t[11] == 'x' && t[21] == 'x' && t[31] == 'x') {
-        return -1
-    }
-    if (t[12] == 'x' && t[22] == 'x' && t[32] == 'x') {
-        return -1
-    }
-    if (t[13] == 'x' && t[23] == 'x' && t[33] == 'x') {
-        return -1
-    }
-    if (t[11] == 'x' && t[22] == 'x' && t[33] == 'x') {
-        return -1
-    }
-    if (t[13] == 'x' && t[22] == 'x' && t[31] == 'x') {
-        return -1
-    }
-    if (t[11] == 'o' && t[12] == 'o' && t[13] == 'o') {
-        return 1
-    }
-    if (t[21] == 'o' && t[22] == 'o' && t[23] == 'o') {
-        return 1
-    }
-    if (t[31] == 'o' && t[32] == 'o' && t[33] == 'o') {
-        return 1
-    }
-    if (t[11] == 'o' && t[21] == 'o' && t[31] == 'o') {
-        return 1
-    }
-    if (t[12] == 'o' && t[22] == 'o' && t[32] == 'o') {
-        return 1
-    }
-    if (t[13] == 'o' && t[23] == 'o' && t[33] == 'o') {
-        return 1
-    }
-    if (t[11] == 'o' && t[22] == 'o' && t[33] == 'o') {
-        return 1
-    }
-    if (t[13] == 'o' && t[22] == 'o' && t[31] == 'o') {
 
-        return 1
+function checkWin(board, player) {
+
+    var winning = [
+        { 1: 11, 2: 12, 3: 13 },
+        { 1: 21, 2: 22, 3: 23 },
+        { 1: 31, 2: 32, 3: 33 },
+        { 1: 11, 2: 21, 3: 31 },
+        { 1: 12, 2: 22, 3: 32 },
+        { 1: 13, 2: 23, 3: 33 },
+        { 1: 11, 2: 22, 3: 33 },
+        { 1: 13, 2: 22, 3: 31 }]
+    for (var o = 0; o < 2; o++) {
+        var value = player
+        for (var i = 0; i < 8; i++) {
+            if (board[winning[i][1]] == board[winning[i][2]] && board[winning[i][1]] == board[winning[i][3]] && board[winning[i][1]] == value) {
+                return true
+            }
+        }
     }
-    return null
+    return false
 }
