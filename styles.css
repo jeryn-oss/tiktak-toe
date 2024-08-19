@@ -11,10 +11,11 @@
     margin: 0 auto;
     padding: 0;
     line-height: 4px;
+
 }
 
 body {
-    background: rgb(34, 34, 34);
+    background: rgb(0, 0, 0);
     height: 100vh;
     padding: 0;
     margin: 0%;
@@ -34,9 +35,9 @@ body {
 }
 
 .square {
-    border: 5px solid var(--second);
-    font-size: 90px;
-    border-radius: 20px;
+    border: 1px solid #464646;
+    font-size: 100px;
+    border-radius: 5px;
     padding: 0;
     margin: 0;
     display: flex;
@@ -45,16 +46,20 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    padding-bottom: 10px;
+    padding: 0;
+    margin: 0;
 }
 
+
+
 .square:hover {
-    background: rgba(255, 255, 255, 0.372);
-    border: 5px solid white;
+    border: 2px solid white;
 }
 
 p {
-    display: block;
+    position: relative;
+    top: -8px;
+    right: 0px;
     margin-block-start: 0em;
     margin-block-end: 0em;
     margin-inline-start: 0px;
@@ -71,7 +76,7 @@ p {
     left: 50%;
     transform-origin: 50% 50%;
     transform: translate(-50%, -50%);
-    width: 20px;
+    width: 10px;
     height: 240px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.574);
@@ -82,11 +87,11 @@ p {
     bottom: -30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgb(255, 255, 255);
-    color: black;
+    background: none;
+    color: white;
     font-size: 16px;
-    border: none;
-    border-radius: 20px;
+    border: 1px solid #464646;
+    border-radius: 5px;
     padding: 20px;
     width: 200px;
     cursor: pointer;
@@ -94,16 +99,14 @@ p {
 }
 
 .reset:hover {
-    background: rgba(255, 255, 255, 0.8);
-    width: 220px;
+    border-color: white;
 }
 
 .winner {
-    display: none; 
+    display: none;
     position: absolute;
     transform-origin: center;
     top: -50px;
     left: 50%;
     transform: translate(-50%);
 }
-
