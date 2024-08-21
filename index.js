@@ -118,7 +118,7 @@ function place(type, position) {
             }
             place('o', move)
         }
-    }, 1000)
+    }, 100)
 
 }
 
